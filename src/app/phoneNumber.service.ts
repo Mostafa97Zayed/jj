@@ -15,11 +15,12 @@ export class phoneService{
 
     public getPhones(): Observable<phoneNumber[]>
     {
-        return this.http.get<phoneNumber[]>(`${this.apiServerUrl}/phone`);
+        return this.http.get<phoneNumber[]>(`${this.apiServerUrl}/phone/findAll`);
     }
 
-    public addPhone(phoneNumber: phoneNumber): Observable<phoneNumber>{
-        return this.http.post<phoneNumber>(`${this.apiServerUrl}/phone/add`, phoneNumber);
+
+    public addPhone(phoneNumber: string): Observable<void>{
+        return this.http.get<void>(`${this.apiServerUrl}/phone/find/${phoneNumber}`);
     }
     public updatePhone(phone: phoneNumber): Observable<phoneNumber>{
         return this.http.put<phoneNumber>(`${this.apiServerUrl}/phone/update`,phone);

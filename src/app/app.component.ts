@@ -37,31 +37,22 @@ export class AppComponent implements OnInit {
   }
   
   public onAddPhone(addForm: NgForm): void {
+    console.log(addForm)
     document.getElementById('add-employee-form')?.click();
-    this.phoneService.addPhone(addForm.value).subscribe(
-      (response: phoneNumber) => {
+    this.phoneService.addPhone(addForm.value.local_format).subscribe(
+      (response:void) => {
         console.log(response);
         this.getPhones();
-        addForm.reset();
+      //  addForm.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
-        addForm.reset();
+       // addForm.reset();
       }
     );
   }
   
-  public onUpdatePhone(phone: phoneNumber): void {
-    this.phoneService.updatePhone(phone).subscribe(
-      (response: phoneNumber) => {
-        console.log(response);
-        this.getPhones();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
+  
 
 
   public onOpenModal(phone: phoneNumber, mode: string): void {

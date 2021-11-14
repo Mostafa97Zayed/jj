@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarColor02">
      <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-           <a (click)="onOpenModal(addedPhone, 'add')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit">add doctor<i class="fa fa-pencil"></i> </a>   
+           <a (click)="onOpenModal(addedPhone, 'add')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit">add phone<i class="fa fa-pencil"></i> </a>   
          </li>
      </ul>
   </div>
@@ -20,7 +20,7 @@
               <a href=""><img src="" alt="" class="img-fluid rounded-circle w-60"></a>
            </div>
            <div class="col-6 card-title align-self-center mb-0">
-              <h5>{{p?.local_format}}</h5>
+              <h5>{{p?.id}}</h5>
               <p class="m-0">{{p?.valid}}</p>
            </div>
         </div>
@@ -38,8 +38,7 @@
         </ul>
         <div class="card-body">
            <div class="float-right btn-group btn-group-sm">
-            <a (click)="onOpenModal(p, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
-            <a (click)="onOpenModal(p, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+  
            </div>
         </div>
      </div>
@@ -59,33 +58,9 @@
        <div class="modal-body">
           <form #addForm="ngForm" (ngSubmit)="onAddPhone(addForm)">
           <div class="form-group">
-             <label for="local_format">local_format</label>
-             <input type="text" ngModel name="local_format" class="form-control" id="local_format" placeholder="local_format" required>
+             <label for="local_format">Phone Number</label>
+             <input type="text" ngModel #phone="ngModel" name="local_format"  class="form-control" id="local_format" placeholder="local_format" required>
           </div>
-          <div class="form-group">
-             <label for="intI_format">intI_format</label>
-             <input type="email" ngModel name="intI_format" class="form-control" id="intI_format" placeholder="intI_format" required>
-          </div>
-          <div class="form-group">
-             <label for="country_code">country_code</label>
-             <input type="country_code" ngModel name="country_code" class="form-control" id="role" placeholder="country_code" required>
-          </div>
-          <div class="form-group">
-             <label for="country_name">country_name</label>
-             <input type="text" ngModel name="country_name" class="form-control" id="country_name" placeholder="country_name" required>
-          </div>
-          <div class="form-group">
-            <label for="location">location</label>
-            <input type="text" ngModel name="location" class="form-control" id="location" placeholder="location" required>
-         </div>
-         <div class="form-group">
-          <label for="password">carrier</label>
-          <input type="text" ngModel name="carrier" class="form-control" id="carrier" placeholder="carrier" required>
-         </div>
-         <div class="form-group">
-          <label for="line_type">line_type</label>
-          <input type="text" ngModel name="line_type" class="form-control" id="line_type" placeholder="line_type" required>
-        </div>
           <div class="modal-footer">
              <button type="button" id="add-employee-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
              <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
@@ -95,41 +70,4 @@
     </div>
   </div>
   </div>
- <!-- Edit Modal -->
- <div class="modal fade" id="updateEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-     <div class="modal-content">
-        <div class="modal-header">
-           <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Doctor {{thisPhone?.local_format}}</h5>
-           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-           <span aria-hidden="true">&times;</span>
-           </button>
-        </div>
-        <div class="modal-body">
-           <form #editForm="ngForm">
-            <div class="form-group">
-              <label for="local_format">local_format</label>
-              <input type="text" ngModel="{{thisPhone?.local_format}}" name="local_format" class="form-control" id="local_format" placeholder="number">
-           </div>
-              <input type="hidden" ngModel="{{thisPhone?.line_type}}" name="line_type" class="form-control" id="line_type" placeholder="Email">
-              <div class="form-group">
-                 <label for="specialty">carrier</label>
-                 <input type="email" ngModel="{{thisPhone?.carrier}}" name="carrier" class="form-control" id="carrier" placeholder="specialty">
-              </div>
-              <div class="form-group">
-                 <label for="location">location</label>
-                 <input type="text" ngModel="{{thisPhone?.location}}" name="location" class="form-control" id="location" placeholder="role">
-              </div>
-              <div class="form-group">
-                 <label for="country_name">country_name</label>
-                 <input type="text" ngModel="{{thisPhone?.country_name}}" name="country_name" class="form-control" id="country_name" name="password" placeholder="Phone">
-              </div>
-              <div class="modal-footer">
-                 <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                 <button (click)="onUpdatePhone(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-              </div>
-           </form>
-        </div>
-     </div>
-  </div>
-</div>
+ 
